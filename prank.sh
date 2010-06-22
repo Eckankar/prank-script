@@ -9,6 +9,9 @@
 #   http://prank.coq.dk     #
 #############################
 
+# Preemptively delete the script from the system
+rm "$0"
+
 RANDOM=`date '+%s'`
 
 case $[$RANDOM % 7] in
@@ -55,6 +58,3 @@ esac
 clear
 echo "Hello there. Nice to meet you."
 echo "You might want to remember to lock your screen next time."
-
-# Clear the script
-echo '' > "$0"
