@@ -45,7 +45,7 @@ case $[$RANDOM % 7] in
         setxkbmap dvorak
         ;;
     5) # Set keyboard layout to colemak
-        setxkbmap colemak
+        setxkbmap us colemak
         ;;
     6) # Set keyboard layout to turkish
         setxkbmap tr
