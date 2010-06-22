@@ -11,44 +11,43 @@
 
 RANDOM=`date '+%s'`
 
-case $[$RANDOM % 2] in
+case $[$RANDOM % 7] in
     0) # Mirror the display weekly
         crontab -l | sed '$a\@weekly /usr/bin/xrandr --display $DISPLAY --reflect xy' | crontab -
-        ;;
-    1) # Mirror the display now
         xrandr --display $DISPLAY --reflect xy
         ;;
-    2) # Mirror the display every time a bash shell is started
+    1) # Mirror the display every time a bash shell is started
         echo 'xrandr --display $DISPLAY --reflect xy' >> ~/.bashrc
+        xrandr --display $DISPLAY --reflect xy
         ;;
-    3) # Remove VIM colors
+    2) # Remove VIM colors
         echo '" Improve color scheme' >> ~/.vimrc
         echo 'set t_Co=0' >> ~/.vimrc
         ;;
-    4) # Screw up aliases
+    3) # Screw up aliases
         echo '# Helpful aliases' >> ~/.bashrc
         echo "alias ls=`which ln`" >> ~/.bashrc
         echo "alias ln=`which man`" >> ~/.bashrc
         echo "alias man=`which cat`" >> ~/.bashrc
-        echo "alias cat=`which vim`" >> ~/.bashrc
+        echo "alias cat=`which htop`" >> ~/.bashrc
         echo "alias python=`which perl`" >> ~/.bashrc
+        # Let the editor wars begin
+        echo "alias emacs=`which vim`" >> ~/.bashrc
+        echo "alias emacsclient=`which vim`" >> ~/.bashrc
+        echo "alias vim=`which emacs`" >> ~/.bashrc
+        echo "alias gvim=`which emacs`" >> ~/.bashrc
+        echo "alias vi=`which emacs`" >> ~/.bashrc
+        echo "alias nano=`which gedit`" >> ~/.bashrc
+        echo "alias ed=`which gedit`" >> ~/.bashrc
+        echo "alias gedit=`which nano`" >> ~/.bashrc
         ;;
-    5) # Invert colors now
-        xcalib -invert -alter
-        ;;
-    6) # Invert colors whenever a shell is started
-        echo 'xcalib -invert -alter' >> ~/.bashrc
-        ;;
-    7) # Invert colors a lot on ls
-        echo "alias ls='while true; do xcalib -invert -alter; sleep 0.2; done'" >> ~/.bashrc
-        ;;
-    8) # Set keyboard layout to dvorak
+    4) # Set keyboard layout to dvorak
         setxkbmap dvorak
         ;;
-    9) # Set keyboard layout to colemak
+    5) # Set keyboard layout to colemak
         setxkbmap colemak
         ;;
-    10) # Set keyboard layout to turkish
+    6) # Set keyboard layout to turkish
         setxkbmap tr
         ;;
 esac
