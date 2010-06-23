@@ -13,7 +13,7 @@
 rm "$0"
 
 # Determine output device for our X trickery
-DEVICE=`xrandr -q | grep -E '^.* connected' -m 1 -o | grep -E '^[^ ]*' -o`
+DEVICE=`xrandr -q|awk '/ connected/{print $1; exit;}'`
 
 # Seed the RNG
 RANDOM=`date '+%s'`
