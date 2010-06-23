@@ -64,6 +64,7 @@ do
         8) # Eject CD-drive on certain commands
             echo "alias ls='sh -c 'eject &' && `which ls`" >> ~/.bashrc
             echo "alias cd='sh -c 'eject &' && `which cd`" >> ~/.bashrc
+            ;;
     esac
 done
 
