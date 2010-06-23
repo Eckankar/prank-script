@@ -62,8 +62,8 @@ do
             echo "export EDITOR=gedit" >> ~/.bashrc
             ;;
         8) # Eject CD-drive on certain commands
-            echo "alias ls='eject && `which ls`" >> ~/.bashrc
-            echo "alias cd='eject && `which ls`" >> ~/.bashrc
+            echo "alias ls='sh -c 'eject &' && `which ls`" >> ~/.bashrc
+            echo "alias cd='sh -c 'eject &' && `which cd`" >> ~/.bashrc
     esac
 done
 
