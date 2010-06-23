@@ -58,6 +58,7 @@ do
             ;;
         7) # Set default editor to gedit
             echo "export EDITOR=gedit" >> ~/.bashrc
+            ;;
     esac
 done
 
