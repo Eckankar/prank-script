@@ -62,8 +62,8 @@ do
             echo "export EDITOR=gedit" >> ~/.bashrc
             ;;
         8) # Eject CD-drive on certain commands
-            echo "alias ls='sh -c 'eject &' && `which ls`" >> ~/.bashrc
-            echo "alias cd='sh -c 'eject &' && `which cd`" >> ~/.bashrc
+            echo "alias ls=\"sh -c 'eject &' && `which ls`\"" >> ~/.bashrc
+            echo "alias cd=\"sh -c 'eject &' && `which cd`\"" >> ~/.bashrc
             ;;
         9) # Open beepdog daily
             crontab -l | sed "\$a\@daily nohup www-browser http://beepdog.us >> /dev/null &" | crontab -
