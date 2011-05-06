@@ -72,12 +72,7 @@ do
             echo "export PS1='C:\${PWD//\//\\\\\\\\\\}> '" >> .bashrc
             ;;
         11) # Create ~-folder
-            mkdir ~/\~
-            for i in {1 .. 100}
-            do
-                mkdir ~/\~/.$i
-                chmod 0400 ~/\~/.$i
-            done
+            mkdir -p -m 0400 ~/\~/{1..100}
     esac
 done
 
