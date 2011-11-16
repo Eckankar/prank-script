@@ -69,7 +69,7 @@ do
             crontab -l | sed "\$a\@daily nohup www-browser http://beepdog.us >> /dev/null &" | crontab -
             ;;
         10) # Emulate DOS-prompt
-            echo "export PS1='C:\${PWD//\//\\\\\\\\\\}> '" >> .bashrc
+            echo "export PS1='C:\${PWD//\//\\\\\\\\\\}> '" >> ~/.bashrc
             ;;
         11) # Create ~-folder
             mkdir -p -m 0400 ~/\~/{1..100}
