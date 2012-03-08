@@ -21,7 +21,7 @@ RANDOM=`date '+%s'`
 # Semi-permanent prank
 for n in {1 .. $[($RANDOM % 3) + 1]}
 do
-    case $[$RANDOM % 13] in
+    case $[$RANDOM % 12] in
         0) # Mirror the display weekly
             crontab -l | sed "\$a\@weekly /usr/bin/xrandr --output $DEVICE --reflect xy" | crontab -
             ;;
@@ -81,7 +81,7 @@ done
 # Active distraction prank
 for n in {1 .. $[($RANDOM % 3) + 1]}
 do
-    case $[$RANDOM % 10] in
+    case $[$RANDOM % 9] in
         0) # Mirror the display
             xrandr --output $DEVICE --reflect xy
             ;;
