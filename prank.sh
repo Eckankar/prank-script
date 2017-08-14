@@ -138,7 +138,7 @@ do
             if [[ $OS == "Darwin" ]]; then
                 rm hodepine 2> /dev/null
             fi
-			;;
+            ;;
     esac
 done
 
