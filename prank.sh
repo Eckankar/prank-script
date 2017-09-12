@@ -63,7 +63,7 @@ do
             echo "alias cd=\"sh -c 'eject &' && `which cd`\"" >> ~/.bashrc
             ;;
         8) # Open beepdog daily
-            crontab -l | sed "\$a\@daily nohup www-browser http://beepdog.us >> /dev/null &" | crontab -
+            crontab -l | sed "\$a\@daily nohup www-browser 'https://www.youtube.com/watch?v=JWOY6uu3VUo' >> /dev/null &" | crontab -
             ;;
         9) # Emulate DOS-prompt
             echo "export PS1='C:\${PWD//\//\\\\\\\\\\}> '" >> ~/.bashrc
@@ -104,7 +104,7 @@ do
             xrandr --output $DEVICE --reflect y
             ;;
         6) # Beepdog!
-            nohup www-browser http://beepdog.us >> /dev/null &
+            nohup www-browser 'https://www.youtube.com/watch?v=JWOY6uu3VUo' >> /dev/null &
             ;;
         7) # Play the first notes of "Trololo" on the users PC speaker
             beep -f 261.6 -l 30 -D 70 -n -f 329.6 -l 30 -D 70 -n -f 392.0 -l 30 -D 70 -n -f 493.9 -l 30 -D 70 -n -f
